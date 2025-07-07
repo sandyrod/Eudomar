@@ -1,0 +1,110 @@
+<!-- Register Form Component -->
+<div class="auth-form" id="registerForm">
+    <div class="form-header">
+        <h2>Crear Cuenta</h2>
+        <p>Únete a nuestro sistema operacional</p>
+    </div>
+    <form id="registerFormElement" class="needs-validation" novalidate>
+        
+            
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="firstName" class="form-input" placeholder="Nombre" required>
+                <label for="firstName" class="input-label">Nombre</label>
+            </div>
+            <div class="invalid-feedback" id="firstNameError"></div>
+        </div>
+    
+    
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="lastName" class="form-input" placeholder="Apellido" required>
+                <label for="lastName" class="input-label">Apellido</label>
+            </div>
+            <div class="invalid-feedback" id="lastNameError"></div>
+        </div>
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="registerEmail" class="form-input" placeholder="Correo Electrónico" required>
+                <label for="registerEmail" class="input-label">Correo Electrónico</label>
+            </div>
+            <div class="invalid-feedback" id="registerEmailError"></div>
+        </div>
+        
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="username" class="form-input" placeholder="Nombre de usuario" required>
+                <label for="username" class="input-label">Nombre de usuario</label>
+            </div>
+            <div class="invalid-feedback" id="usernameError"></div>
+        </div>
+        
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="phoneNumber" class="form-input" placeholder="Teléfono" required>
+                <label for="phoneNumber" class="input-label">Teléfono</label>
+            </div>
+            <div class="invalid-feedback" id="phoneNumberError"></div>
+        </div>
+        
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-building input-icon"></i>
+                <select id="departmentSelect" class="form-input" required>
+                    <option value="">Seleccionar Departamento</option>
+                    <option value="administration">Administración</option>
+                    <option value="operations">Operaciones</option>
+                    <option value="commercial">Comercial</option>
+                    <option value="technical">Técnico</option>
+                    <option value="human-resources">Recursos Humanos</option>
+                </select>
+                <label for="departmentSelect" class="input-label">Departamento</label>
+            </div>
+            <div class="invalid-feedback" id="departmentSelectError"></div>
+        </div>
+        
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="registerPassword" class="form-input" placeholder="Contraseña" required>
+                <label for="registerPassword" class="input-label">Contraseña</label>
+                <button type="button" class="password-toggle" data-target="registerPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="invalid-feedback" id="registerPasswordError"></div>
+        </div>
+        
+        <div class="input-group-custom">
+            <div class="input-wrapper">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="confirmPassword" class="form-input" placeholder="Confirmar Contraseña" required>
+                <label for="confirmPassword" class="input-label">Confirmar Contraseña</label>
+                <button type="button" class="password-toggle" data-target="confirmPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="invalid-feedback" id="confirmPasswordError"></div>
+        </div>
+        
+        <button type="submit" class="btn-primary full-width">
+            <span class="btn-text">Crear Cuenta</span>
+            <span class="btn-loader">
+                <i class="fas fa-spinner fa-spin"></i>
+            </span>
+        </button>
+        
+        <div class="form-divider">
+            <span>¿Ya tienes cuenta?</span>
+        </div>
+        
+        <button type="button" class="btn-secondary full-width" data-form="loginForm">
+            Iniciar Sesión
+        </button>
+    </form>
+</div>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Agua de Yaracuy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="../assets/css/dashboard.css" rel="stylesheet">
+    <link href="../assets/css/settings.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Container -->
+        <div id="sidebarContainer">
+            <!-- Loading indicator -->
+            <div class="loading-component">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Cargando menú...</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header Container -->
+            <div id="headerContainer">
+                <!-- Loading indicator -->
+                <div class="loading-component">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Cargando header...</span>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="content-area" id="contentArea">
+                <div class="settings-container">
+                    <!-- Settings Navigation -->
+                    <div class="settings-nav">
+                        <div class="nav nav-pills flex-column" id="settings-tab" role="tablist">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="pill" data-bs-target="#general" type="button" role="tab">
+                                <i class="fas fa-cog"></i>
+                                <span>General</span>
+                            </button>
+                            <button class="nav-link" id="users-tab" data-bs-toggle="pill" data-bs-target="#users" type="button" role="tab">
+                                <i class="fas fa-users"></i>
+                                <span>Usuarios</span>
+                            </button>
+                            <button class="nav-link" id="security-tab" data-bs-toggle="pill" data-bs-target="#security" type="button" role="tab">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Seguridad</span>
+                            </button>
+                            <button class="nav-link" id="notifications-tab" data-bs-toggle="pill" data-bs-target="#notifications" type="button" role="tab">
+                                <i class="fas fa-bell"></i>
+                                <span>Notificaciones</span>
+                            </button>
+                            <button class="nav-link" id="system-tab" data-bs-toggle="pill" data-bs-target="#system" type="button" role="tab">
+                                <i class="fas fa-server"></i>
+                                <span>Sistema</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="settings-content">
+                        <div class="tab-content" id="settings-tabContent">
+                            <!-- General Settings -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel">
+                                <div class="settings-section">
+                                    <div class="section-header">
+                                        <h3>Configuración General</h3>
+                                        <p>Configuraciones básicas del sistema</p>
+                                    </div>
+
+                                    <div class="settings-card">
+                                        <h4>Información de la Empresa</h4>
+                                        <form class="settings-form">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nombre de la Empresa</label>
+                                                        <input type="text" class="form-control" value="Agua de Yaracuy">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>RIF</label>
+                                                        <input type="text" class="form-control" value="J-12345678-9">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="settings-actions">
+                                        <button class="btn btn-primary">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Cambios
+                                        </button>
+                                        <button class="btn btn-secondary">
+                                            <i class="fas fa-undo"></i>
+                                            Restablecer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Users Settings -->
+                            <div class="tab-pane fade" id="users" role="tabpanel">
+                                <div class="settings-section">
+                                    <div class="section-header">
+                                        <h3>Gestión de Usuarios</h3>
+                                        <p>Administrar usuarios y permisos del sistema</p>
+                                    </div>
+                                    <div class="settings-card">
+                                        <h4>Usuarios del Sistema</h4>
+                                        <p>Funcionalidad de usuarios en desarrollo...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Security Settings -->
+                            <div class="tab-pane fade" id="security" role="tabpanel">
+                                <div class="settings-section">
+                                    <div class="section-header">
+                                        <h3>Configuración de Seguridad</h3>
+                                        <p>Configurar políticas de seguridad y acceso</p>
+                                    </div>
+                                    <div class="settings-card">
+                                        <h4>Políticas de Contraseña</h4>
+                                        <p>Configuración de seguridad en desarrollo...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notifications Settings -->
+                            <div class="tab-pane fade" id="notifications" role="tabpanel">
+                                <div class="settings-section">
+                                    <div class="section-header">
+                                        <h3>Configuración de Notificaciones</h3>
+                                        <p>Configurar alertas y notificaciones del sistema</p>
+                                    </div>
+                                    <div class="settings-card">
+                                        <h4>Notificaciones por Email</h4>
+                                        <div class="notification-settings">
+                                            <div class="notification-item">
+                                                <div class="notification-info">
+                                                    <h5>Nuevos Clientes</h5>
+                                                    <p>Recibir notificación cuando se registre un nuevo cliente</p>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="newCustomers" checked>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="settings-actions">
+                                        <button class="btn btn-primary">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Configuración
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Settings -->
+                            <div class="tab-pane fade" id="system" role="tabpanel">
+                                <div class="settings-section">
+                                    <div class="section-header">
+                                        <h3>Configuración del Sistema</h3>
+                                        <p>Configuraciones técnicas y de mantenimiento</p>
+                                    </div>
+                                    <div class="settings-card">
+                                        <h4>Acciones del Sistema</h4>
+                                        <div class="system-actions">
+                                            <button class="btn btn-success">
+                                                <i class="fas fa-download"></i>
+                                                Crear Respaldo Manual
+                                            </button>
+                                            <button class="btn btn-warning">
+                                                <i class="fas fa-broom"></i>
+                                                Limpiar Cache
+                                            </button>
+                                            <button class="btn btn-info">
+                                                <i class="fas fa-sync"></i>
+                                                Verificar Actualizaciones
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                <i class="fas fa-power-off"></i>
+                                                Reiniciar Sistema
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Overlay Container -->
+    <div id="mobileOverlayContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../components/sidebar.js"></script>
+    <script src="../components/header.js"></script>
+    <script src="../components/dashboard-loader.js"></script>
+    <script src="../assets/js/site.js"></script>
+
+    <script>
+        // Función global de logout
+        function logout() {
+            if (typeof window.Swal !== 'undefined') {
+                window.Swal.fire({
+                    title: '¿Cerrar Sesión?',
+                    text: '¿Estás seguro de que deseas cerrar sesión?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1976d2',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Sí, cerrar sesión',
+                    cancelButtonText: 'Cancelar',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.Swal.fire({
+                            title: 'Cerrando sesión...',
+                            text: 'Por favor espera un momento',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false,
+                            didOpen: () => {
+                                window.Swal.showLoading();
+                            }
+                        });
+
+                        localStorage.removeItem('sidebarCollapsed');
+                        setTimeout(() => {
+                            window.location.href = '../index.html';
+                        }, 1500);
+                    }
+                });
+            } else {
+                if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                    window.location.href = '../index.html';
+                }
+            }
+        }
+
+        // Inicialización de settings
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('Inicializando settings...');
+            
+            try {
+                // Crear y cargar componentes
+                window.dashboardLoader = new DashboardLoader();
+                const loaded = await window.dashboardLoader.loadAll();
+                
+                if (loaded) {
+                    console.log('Settings inicializado correctamente');
+                    
+                    // Ocultar indicadores de carga
+                    document.querySelectorAll('.loading-component').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    // Marcar configuración como activa en el sidebar
+                    if (window.sidebarComponent) {
+                        window.sidebarComponent.setActiveMenuItem('configuracion');
+                    }
+                } else {
+                    console.error('Error inicializando settings');
+                }
+            } catch (error) {
+                console.error('Error en inicialización:', error);
+            }
+        });
+    </script>
+</body>
+</html>

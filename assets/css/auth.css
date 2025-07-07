@@ -1,0 +1,939 @@
+/* Variables CSS */
+:root {
+  --primary-blue: #1976d2;
+  --secondary-blue: #2196f3;
+  --light-blue: #e3f2fd;
+  --accent-blue: #64b5f6;
+  --primary-green: #4caf50;
+  --success-green: #2e7d32;
+  --error-red: #d32f2f;
+  --warning-orange: #f57c00;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --medium-gray: #6c757d;
+  --dark-gray: #343a40;
+  --border-color: #dee2e6;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--white);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Contenedor principal */
+.auth-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fondo animado */
+.water-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+  z-index: -1;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200px;
+  background: linear-gradient(45deg, var(--accent-blue), var(--secondary-blue));
+  border-radius: 50%;
+  opacity: 0.05;
+  animation: wave-float 25s infinite linear;
+}
+
+.wave-1 {
+  top: -100px;
+  left: -50%;
+  animation-delay: 0s;
+}
+
+.wave-2 {
+  top: -150px;
+  left: -50%;
+  animation-delay: -8s;
+  opacity: 0.04;
+}
+
+.wave-3 {
+  top: -200px;
+  left: -50%;
+  animation-delay: -16s;
+  opacity: 0.03;
+}
+
+@keyframes wave-float {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* Panel de branding */
+.branding-section {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.branding-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.branding-content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  padding: 2rem;
+  animation: fadeInLeft 1s ease-out;
+  max-width: 500px;
+  width: 100%;
+}
+
+.company-logo {
+  margin-bottom: 3rem;
+}
+
+.logo-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--accent-blue);
+  animation: dropBounce 3s ease-in-out infinite;
+}
+
+@keyframes dropBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.company-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+}
+
+.company-tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.features-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(10px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+  min-width: 40px;
+}
+
+.feature-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-text p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Panel de formularios - CORREGIDO */
+.forms-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--white);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Contenedor de formularios - CORREGIDO */
+.forms-container {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+.mobile-brand {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--primary-blue);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.mobile-brand i {
+  font-size: 2.2rem;
+  margin-right: 0.5rem;
+  color: var(--secondary-blue);
+}
+
+/* Formularios - CORREGIDO EL POSICIONAMIENTO */
+.auth-form {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  transition: var(--transition);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.auth-form.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  position: relative;
+  pointer-events: all;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.form-header h2 {
+  color: var(--primary-blue);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.form-header p {
+  color: var(--medium-gray);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Grupos de input */
+.input-group-custom {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Espaciado específico para login */
+#loginForm .input-group-custom {
+  margin-bottom: 1.2rem;
+}
+
+#loginForm .form-header {
+  margin-bottom: 1.5rem;
+}
+
+#loginForm .form-header h2 {
+  font-size: 2.2rem;
+}
+
+#loginForm .form-options {
+  margin: 1.2rem 0;
+}
+
+#loginForm .form-links {
+  margin: 1.2rem 0;
+}
+
+#loginForm .form-divider {
+  margin: 1.5rem 0;
+}
+
+/* Espaciado para registro - MÁS COMPACTO */
+#registerForm .input-group-custom {
+  margin-bottom: 0.8rem;
+}
+
+#registerForm .form-header {
+  margin-bottom: 1rem;
+}
+
+#registerForm .form-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+#registerForm .form-divider {
+  margin: 1rem 0;
+}
+
+#registerForm .row {
+  margin-bottom: 0;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--medium-gray);
+  font-size: 1rem;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--white);
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+  height: 50px;
+}
+
+.form-input:focus {
+  border-color: var(--secondary-blue);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-input:focus + .input-label,
+.form-input:not(:placeholder-shown) + .input-label {
+  transform: translateY(-2.2rem) scale(0.85);
+  color: var(--secondary-blue);
+  font-weight: 500;
+}
+
+.form-input:focus ~ .input-icon {
+  color: var(--secondary-blue);
+}
+
+.input-label {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--medium-gray);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: var(--transition);
+  background: var(--white);
+  padding: 0 0.5rem;
+  z-index: 1;
+}
+
+/* Select personalizado */
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  padding-right: 3rem;
+}
+
+select.form-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232196F3' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Toggle de contraseña */
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--medium-gray);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: var(--transition);
+  z-index: 3;
+  font-size: 1rem;
+}
+
+.password-toggle:hover {
+  color: var(--secondary-blue);
+}
+
+/* Mensajes de error */
+.invalid-feedback {
+  color: var(--error-red);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  padding-left: 1rem;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  min-height: 1rem;
+  display: block;
+  font-weight: 500;
+}
+
+.form-input.is-invalid ~ .invalid-feedback {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-input.is-invalid {
+  border-color: var(--error-red);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+  animation: shake 0.6s ease-in-out;
+}
+
+.form-input.is-invalid ~ .input-icon {
+  color: var(--error-red);
+}
+
+.form-input.is-valid {
+  border-color: var(--success-green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.form-input.is-valid ~ .input-icon {
+  color: var(--success-green);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* Opciones de formulario */
+.form-options {
+  margin: 1rem 0;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  margin-right: 0.6rem;
+  position: relative;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + .checkmark {
+  background: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text {
+  line-height: 1.3;
+}
+
+/* Botones */
+.btn-primary,
+.btn-secondary {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 50px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary-blue);
+  border: 2px solid var(--secondary-blue);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-blue);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.btn-loader {
+  display: none;
+}
+
+.btn-primary.loading .btn-text,
+.btn-secondary.loading .btn-text {
+  display: none;
+}
+
+.btn-primary.loading .btn-loader,
+.btn-secondary.loading .btn-loader {
+  display: block;
+}
+
+.btn-primary.loading,
+.btn-secondary.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Enlaces */
+.link-primary {
+  color: var(--secondary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.link-primary:hover {
+  color: var(--primary-blue);
+  text-decoration: underline;
+}
+
+.form-links {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Divisor */
+.form-divider {
+  text-align: center;
+  margin: 1.2rem 0;
+  position: relative;
+  color: var(--medium-gray);
+  font-size: 0.95rem;
+}
+
+.form-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.form-divider span {
+  background: var(--white);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Notificaciones */
+.notifications-container {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 9999;
+  max-width: 420px;
+}
+
+.notification {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.2rem 1.8rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 6px 25px var(--shadow-medium);
+  border-left: 5px solid;
+  animation: slideInRight 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.notification.success {
+  border-left-color: var(--success-green);
+}
+
+.notification.error {
+  border-left-color: var(--error-red);
+}
+
+.notification.warning {
+  border-left-color: var(--warning-orange);
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.notification-icon {
+  font-size: 1.4rem;
+}
+
+.notification.success .notification-icon {
+  color: var(--success-green);
+}
+
+.notification.error .notification-icon {
+  color: var(--error-red);
+}
+
+.notification.warning .notification-icon {
+  color: var(--warning-orange);
+}
+
+.notification-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: var(--medium-gray);
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+
+.notification-close:hover {
+  color: var(--dark-gray);
+}
+
+/* Animaciones */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Contenedor Bootstrap */
+.container-fluid {
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.container-fluid .row {
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+}
+
+.container-fluid .row .col-lg-6,
+.container-fluid .row .col-12 {
+  height: 100vh !important;
+  height: 100dvh !important;
+  padding: 0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .forms-section {
+    padding: 0.5rem;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .forms-container {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .mobile-brand {
+    margin-bottom: 0.5rem;
+  }
+
+  .company-name {
+    font-size: 2.2rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .notifications-container {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  /* Ajustes específicos para registro en móvil */
+  #registerForm .input-group-custom {
+    margin-bottom: 0.6rem;
+  }
+
+  #registerForm .form-header {
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .forms-section {
+    padding: 0.3rem;
+  }
+
+  .mobile-brand {
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  .mobile-brand i {
+    font-size: 1.8rem;
+  }
+
+  .form-header {
+    margin-bottom: 0.8rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .form-header p {
+    font-size: 0.9rem;
+  }
+
+  .input-group-custom {
+    margin-bottom: 0.6rem;
+  }
+
+  .form-divider {
+    margin: 0.8rem 0;
+  }
+
+  .form-input {
+    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    font-size: 0.95rem;
+    height: 45px;
+  }
+
+  .input-label {
+    left: 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .input-icon {
+    left: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    height: 45px;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  /* Ajustes específicos para registro en móvil pequeño */
+  #registerForm .input-group-custom {
+    margin-bottom: 0.4rem;
+  }
+
+  #registerForm .form-header {
+    margin-bottom: 0.6rem;
+  }
+
+  #registerForm .form-divider {
+    margin: 0.6rem 0;
+  }
+
+  #registerForm .row {
+    margin: 0 -0.25rem;
+  }
+
+  #registerForm .col-md-6 {
+    padding: 0 0.25rem;
+  }
+}
+
+/* Estados adicionales */
+.full-width {
+  width: 100%;
+}
+
+/* Mejoras de accesibilidad */
+.form-input:focus,
+.btn-primary:focus,
+.btn-secondary:focus {
+  outline: 2px solid var(--secondary-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Efectos hover mejorados */
+.form-input:hover:not(:focus) {
+  border-color: var(--accent-blue);
+}
+
+.checkbox-wrapper:hover .checkmark {
+  border-color: var(--secondary-blue);
+}
+
+/* Transiciones suaves para todos los elementos interactivos */
+button,
+input,
+select,
+a {
+  transition: var(--transition);
+}
