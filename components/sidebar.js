@@ -276,16 +276,39 @@ class SidebarComponent {
 
   handleLogout() {
     console.log("Logout solicitado")
-    if (this.options.onLogout) {
-      this.options.onLogout()
-    } else {
-      // Logout por defecto
-      if (typeof window.logout === "function") {
-        window.logout()
-      } else {
-        if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-          window.location.href = "../index.html"
+    // SweetAlert2
+    if (typeof window.Swal !== 'undefined') {
+      window.Swal.fire({
+        title: '¿Cerrar Sesión?',
+        text: '¿Estás seguro de que deseas cerrar sesión?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#1976d2',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, cerrar sesión',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.Swal.fire({
+            title: 'Cerrando sesión...',
+            text: 'Por favor espera un momento',
+            icon: 'info',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            didOpen: () => {
+              window.Swal.showLoading();
+            }
+          });
+          setTimeout(() => {
+            window.location.href = '../logout.php';
+          }, 1200);
         }
+      });
+    } else {
+      if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+        window.location.href = '../logout.php';
       }
     }
   }
