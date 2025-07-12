@@ -1,3 +1,23 @@
+<?php
+require_once __DIR__ . '/../conexion.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../index.php');
+    exit;
+}
+$user_id = $_SESSION['user_id'];
+$userName = 'Usuario';
+$userDept = '';
+$stmt = $conn->prepare('SELECT name, lastname, department FROM users WHERE id = ? LIMIT 1');
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$stmt->bind_result($name, $lastname, $department);
+if ($stmt->fetch()) {
+    $userName = $name . ' ' . $lastname;
+    $userDept = $department;
+}
+$stmt->close();
+?>
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="company-brand">
@@ -20,14 +40,14 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="user-info">
-                <h4 id="userName">Juan Pérez</h4>
-                <span id="userRole">Administrador</span>
+                <h4 id="userName"><?php echo htmlspecialchars($userName); ?></h4>
+                <span id="userRole"><?php echo htmlspecialchars($userDept); ?></span>
             </div>
         </div>
 
         <ul class="nav-menu">
             <li class="nav-item" data-page="dashboard">
-                <a href="dashboard.html" class="nav-link" data-section="inicio">
+                <a href="dashboard.php" class="nav-link" data-section="inicio">
                     <i class="fas fa-home"></i>
                     <span>Inicio</span>
                 </a>
@@ -97,7 +117,7 @@
             </li>
             
             <li class="nav-item" data-page="settings">
-                <a href="settings.html" class="nav-link" data-section="configuracion">
+                <a href="settings.php" class="nav-link" data-section="configuracion">
                     <i class="fas fa-cog"></i>
                     <span>Configuración</span>
                 </a>

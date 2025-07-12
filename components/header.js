@@ -18,7 +18,7 @@ class HeaderComponent {
   async load(containerId) {
     try {
       console.log("Cargando header desde archivo...")
-      const response = await fetch("../components/header.html")
+      const response = await fetch("../components/header.php")
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -279,12 +279,12 @@ class HeaderComponent {
         cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = "../index.html"
+          window.location.href = "../logout.php"
         }
       })
     } else {
       if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-        window.location.href = "../index.html"
+        window.location.href = "../logout.php"
       }
     }
   }

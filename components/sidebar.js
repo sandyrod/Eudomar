@@ -18,7 +18,7 @@ class SidebarComponent {
   async load(containerId) {
     try {
       console.log("Cargando sidebar desde archivo...")
-      const response = await fetch("../components/sidebar.html")
+      const response = await fetch("../components/sidebar.php")
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -44,7 +44,7 @@ class SidebarComponent {
     if (!this.isLoaded) return
 
     console.log("Inicializando sidebar...")
-    this.updateUserInfo()
+    // this.updateUserInfo() // Comentado para no sobreescribir datos dinámicos de PHP
     this.setActivePage()
     this.setupEventListeners()
     this.setupSubmenus()
@@ -331,7 +331,7 @@ class SidebarComponent {
   setUserInfo(userName, userRole) {
     this.options.userName = userName
     this.options.userRole = userRole
-    this.updateUserInfo()
+    // this.updateUserInfo() // Comentado para no sobreescribir datos dinámicos de PHP
   }
 
   setActiveMenuItem(section) {

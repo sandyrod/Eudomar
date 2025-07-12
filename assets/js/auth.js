@@ -378,63 +378,62 @@ class AuthApp {
 
   // Manejar login
   async handleLogin(e) {
-    e.preventDefault()
-    console.log("Procesando login...")
+    e.preventDefault();
+    console.log("Procesando login...");
 
-    const form = e.target
-    const username = document.getElementById("loginUsername").value.trim()
-    const password = document.getElementById("loginPassword").value
-    const remember = document.getElementById("rememberMe").checked
-
-    console.log("Datos de login:", { username, password: "***", remember })
+    const form = e.target;
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const remember = document.getElementById("rememberMe").checked;
 
     // Validación básica
     if (!username) {
-      this.showFieldError(document.getElementById("loginUsername"), "El nombre de usuario es requerido")
-      return
+      this.showFieldError(document.getElementById("loginUsername"), "El nombre de usuario es requerido");
+      return;
     }
-
     if (!password) {
-      this.showFieldError(document.getElementById("loginPassword"), "La contraseña es requerida")
-      return
+      this.showFieldError(document.getElementById("loginPassword"), "La contraseña es requerida");
+      return;
     }
 
-    this.showLoading("loginForm")
+    this.showLoading("loginForm");
 
     try {
-      // Simular llamada a API
-      await this.simulateApiCall(1500)
+      const response = await fetch('../login_user.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          loginUsername: username,
+          loginPassword: password,
+        })
+      });
+      const result = await response.json();
 
-      console.log("Validando credenciales...")
-
-      // Validación de credenciales
-      if (username === CONFIG.testCredentials.username && password === CONFIG.testCredentials.password) {
-        console.log("Credenciales válidas!")
-
+      if (result.success) {
+        this.showNotification(result.message || "¡Bienvenido! Iniciando sesión...", "success");
         // Guardar estado si se marcó recordar
         if (remember) {
-          localStorage.setItem("rememberUser", "true")
-          localStorage.setItem("username", username)
+          localStorage.setItem("rememberUser", "true");
+          localStorage.setItem("username", username);
         }
-
-        this.showNotification("¡Bienvenido! Iniciando sesión...", "success")
-
-        // Redirigir al dashboard
         setTimeout(() => {
-          console.log("Redirigiendo al dashboard...")
-          window.location.href = "views/dashboard.html"
-        }, 1500)
+          window.location.href = "views/dashboard.php";
+        }, 1200);
       } else {
-        console.log("Credenciales inválidas")
-        throw new Error(
-          `Credenciales inválidas. Usa: ${CONFIG.testCredentials.username} / ${CONFIG.testCredentials.password}`,
-        )
+        // Mostrar errores de campos si existen
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([field, message]) => {
+            const input = document.getElementById(field);
+            if (input) this.showFieldError(input, message);
+          });
+        }
+        this.showNotification(result.message || "Usuario o contraseña incorrectos.", "error");
       }
     } catch (error) {
-      console.error("Error en login:", error)
-      this.showNotification(error.message || "Error al iniciar sesión. Por favor intenta nuevamente.", "error")
+      console.error("Error en login:", error);
+      this.showNotification("Error al iniciar sesión. Por favor intenta nuevamente.", "error");
     } finally {
-      this.hideLoading("loginForm")
+      this.hideLoading("loginForm");
     }
   }
 
@@ -451,28 +450,47 @@ class AuthApp {
 
     this.showLoading("registerForm")
 
+    // Map frontend fields to backend expected fields
+    const formData = {
+      firstName: document.getElementById("firstName").value.trim(),
+      lastName: document.getElementById("lastName").value.trim(),
+      registerEmail: document.getElementById("registerEmail").value.trim(),
+      username: document.getElementById("username").value.trim(),
+      phoneNumber: document.getElementById("phoneNumber").value.trim(),
+      departmentSelect: document.getElementById("departmentSelect").value,
+      registerPassword: document.getElementById("registerPassword").value,
+    }
+
     try {
-      // Simular llamada a API
-      await this.simulateApiCall(2500)
+      const response = await fetch('../register_user.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      const result = await response.json()
 
-      const formData = {
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
-        email: document.getElementById("registerEmail").value,
-        phone: document.getElementById("phoneNumber").value,
-        department: document.getElementById("departmentSelect").value,
-        password: document.getElementById("registerPassword").value,
-      }
-
-      console.log("Datos de registro:", formData)
-
-      this.showNotification("¡Cuenta creada exitosamente! Revisa tu correo para activar tu cuenta.", "success")
-
-      setTimeout(() => {
-        if (window.formLoader) {
-          window.formLoader.switchToForm("loginForm")
+      if (result.success) {
+        this.showNotification(result.message || "¡Cuenta creada exitosamente!", "success")
+        setTimeout(() => {
+          if (window.formLoader) {
+            window.formLoader.switchToForm("loginForm")
+          }
+        }, 2000)
+        form.reset()
+        // Limpiar estados de validación
+        form.querySelectorAll('.form-input').forEach(input => {
+          input.classList.remove('is-valid', 'is-invalid')
+        })
+      } else {
+        // Mostrar errores de campos si existen
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([field, message]) => {
+            const input = document.getElementById(field)
+            if (input) this.showFieldError(input, message)
+          })
         }
-      }, 2000)
+        this.showNotification(result.message || "No se pudo crear la cuenta.", "error")
+      }
     } catch (error) {
       console.error("Error en registro:", error)
       this.showNotification("Error al crear la cuenta. Por favor intenta nuevamente.", "error")
