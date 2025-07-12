@@ -203,7 +203,7 @@
     <div id="mobileOverlayContainer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../components/sidebar.php"></script>
+
     <script src="../components/header.js"></script>
     <script src="../components/dashboard-loader.js"></script>
     <script src="../assets/js/site.js"></script>
@@ -238,13 +238,13 @@
 
                         localStorage.removeItem('sidebarCollapsed');
                         setTimeout(() => {
-                            window.location.href = '../index.html';
+                            window.location.href = '../logout.php';
                         }, 1500);
                     }
                 });
             } else {
                 if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-                    window.location.href = '../index.html';
+                    window.location.href = '../logout.php';
                 }
             }
         }
