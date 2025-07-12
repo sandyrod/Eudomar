@@ -1,6 +1,7 @@
 <?php
 // Archivo de conexión reutilizable
 $servername = "localhost";
+//$servername = 127.0.0.1";
 $username = "root";
 $password = "";
 $dbname = "aguas";
