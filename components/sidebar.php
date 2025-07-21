@@ -67,19 +67,19 @@ $stmt->close();
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" class="submenu-link" data-section="motores">
+                        <a href="motores.php" class="submenu-link" data-section="motores">
                             <i class="far fa-circle"></i>
                             <span>Motores</span>
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" class="submenu-link" data-section="bombas">
+                        <a href="bombas.php" class="submenu-link" data-section="bombas">
                             <i class="far fa-circle"></i>
                             <span>Bombas</span>
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" class="submenu-link" data-section="estatus">
+                        <a href="pozos.php" class="submenu-link" data-section="estatus">
                             <i class="far fa-circle"></i>
                             <span>Estatus</span>
                         </a>
