@@ -85,12 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Obtener todos los pozos con información de motores y bombas
+// Obtener todos los pozos con información de motores, bombas y municipios
 $pozos = [];
-$query = "SELECT p.*, m.hp as motor_hp, m.voltaje as motor_voltaje, b.lps as bomba_lps, b.tipo as bomba_tipo 
+$query = "SELECT p.*, m.hp as motor_hp, m.voltaje as motor_voltaje, b.lps as bomba_lps, b.tipo as bomba_tipo, mu.municipio as municipio_nombre
           FROM posos p 
           LEFT JOIN motores m ON p.motor_id = m.id 
           LEFT JOIN bombas b ON p.bomba_id = b.id 
+          LEFT JOIN municipios mu ON p.municipio = mu.id
           ORDER BY p.id DESC";
 $result = $conn->query($query);
 if ($result) {
@@ -99,7 +100,7 @@ if ($result) {
     }
 }
 
-// Obtener motores y bombas para los selects
+// Obtener motores para los selects
 $motores = [];
 $result = $conn->query("SELECT id, hp, voltaje, tipo FROM motores ORDER BY hp");
 if ($result) {
@@ -108,11 +109,21 @@ if ($result) {
     }
 }
 
+// Obtener bombas para los selects
 $bombas = [];
 $result = $conn->query("SELECT id, lps, altura, tipo FROM bombas ORDER BY lps");
 if ($result) {
     while ($row = $result->fetch_assoc()) {
         $bombas[] = $row;
+    }
+}
+
+// Obtener municipios para los selects
+$municipios = [];
+$result = $conn->query("SELECT id, municipio FROM municipios ORDER BY municipio");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $municipios[] = $row;
     }
 }
 ?>
@@ -181,7 +192,7 @@ if ($result) {
                                     <tr>
                                         <td><?php echo htmlspecialchars($pozo['id']); ?></td>
                                         <td><?php echo htmlspecialchars($pozo['nombre']); ?></td>
-                                        <td><?php echo htmlspecialchars($pozo['municipio']); ?></td>
+                                        <td><?php echo htmlspecialchars($pozo['municipio_nombre'] ?? 'N/A'); ?></td>
                                         <td><?php echo htmlspecialchars($pozo['norte'] . ', ' . $pozo['este']); ?></td>
                                         <td><?php echo htmlspecialchars($pozo['habitantes']); ?></td>
                                         <td><?php echo htmlspecialchars($pozo['lps']); ?></td>
@@ -239,7 +250,14 @@ if ($result) {
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="municipio" class="form-label">Municipio</label>
-                                    <input type="text" class="form-control" name="municipio" id="municipio" required>
+                                    <select class="form-control" name="municipio" id="municipio" required>
+                                        <option value="">Seleccionar municipio...</option>
+                                        <?php foreach ($municipios as $municipio): ?>
+                                        <option value="<?php echo $municipio['id']; ?>">
+                                            <?php echo htmlspecialchars($municipio['municipio']); ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>

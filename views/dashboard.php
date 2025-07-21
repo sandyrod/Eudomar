@@ -1,6 +1,30 @@
 <?php
 // dashboard.php - Dashboard principal (requiere conexión a la base de datos)
 require_once __DIR__ . '/../conexion.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../index.php');
+    exit;
+}
+
+// Obtener estadísticas de pozos
+$pozosOperativos = 0;
+$pozosFueraServicio = 0;
+
+// Contar pozos operativos
+$result = $conn->query("SELECT COUNT(*) as count FROM posos WHERE statuso = 'Operativo'");
+if ($result) {
+    $pozosOperativos = $result->fetch_assoc()['count'];
+}
+
+// Contar pozos fuera de servicio (statuso != 'Operativo')
+$result = $conn->query("SELECT COUNT(*) as count FROM posos WHERE statuso != 'Operativo' AND statuso IS NOT NULL AND statuso != ''");
+if ($result) {
+    $pozosFueraServicio = $result->fetch_assoc()['count'];
+}
+
+// Total de pozos
+$totalPozos = $pozosOperativos + $pozosFueraServicio;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,7 +69,7 @@ require_once __DIR__ . '/../conexion.php';
                             <i class="fas fa-tint"></i>
                         </div>
                         <div class="stat-content">
-                            <h3>12</h3>
+                            <h3><?php echo $pozosOperativos; ?></h3>
                             <p>Pozos Operativos</p>
                         </div>
                     </div>
@@ -54,7 +78,7 @@ require_once __DIR__ . '/../conexion.php';
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                         <div class="stat-content">
-                            <h3>100</h3>
+                            <h3><?php echo $pozosFueraServicio; ?></h3>
                             <p>Pozos Fuera de Servicio</p>
                         </div>
                     </div>
