@@ -102,13 +102,13 @@ $stmt->close();
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="#" class="submenu-link" data-section="historial">
+                        <a href="historial.php" class="submenu-link" data-section="historial">
                             <i class="far fa-circle"></i>
                             <span>Historial</span>
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" class="submenu-link" data-section="crear">
+                        <a href="reporte.php" class="submenu-link" data-section="crear">
                             <i class="far fa-circle"></i>
                             <span>Crear</span>
                         </a>
