@@ -84,7 +84,7 @@ $totalPozos = $pozosOperativos + $pozosFueraServicio;
                     </div>
                     <div class="stat-card success">
                         <div class="stat-icon">
-                            <i class="fas fa-tools"></i>
+                            <i class="fas fa-water"></i>
                         </div>
                         <div class="stat-content">
                             <h3>4</h3>
@@ -94,52 +94,58 @@ $totalPozos = $pozosOperativos + $pozosFueraServicio;
                 </div>
 
                 <!-- Monthly Chart -->
-                <div class="monthly-chart-section">
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h4>Últimos 4 Meses</h4>
-                            <div class="chart-controls">
-                                <select>
-                                    <option>2024</option>
-                                    <option>2025</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="chart-body">
-                            <div class="horizontal-bars">
-                                <div class="bar-item">
-                                    <div class="bar-label">Enero</div>
-                                    <div class="bar-container">
-                                        <div class="bar bar-blue" style="width: 5.4%;" data-value="180,000"></div>
+                <div class="row mb-6">
+                    <div class="col-md-6">
+                        <div class="monthly-chart-section">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h4>Últimos 4 Meses</h4>
+                                    <div class="chart-controls">
+                                        <select>
+                                            <option>2024</option>
+                                            <option>2025</option>
+                                        </select>
                                     </div>
-                                    <div class="bar-value">180,000</div>
                                 </div>
-                                <div class="bar-item">
-                                    <div class="bar-label">Febrero</div>
-                                    <div class="bar-container">
-                                        <div class="bar bar-red" style="width: 100%;" data-value="3,345,000"></div>
+                                <div class="chart-body">
+                                    <div class="horizontal-bars">
+                                        <div class="bar-item">
+                                            <div class="bar-label">Enero</div>
+                                            <div class="bar-container">
+                                                <div class="bar bar-blue" style="width: 5.4%;" data-value="180,000"></div>
+                                            </div>
+                                            <div class="bar-value">180,000</div>
+                                        </div>
+                                        <div class="bar-item">
+                                            <div class="bar-label">Febrero</div>
+                                            <div class="bar-container">
+                                                <div class="bar bar-red" style="width: 100%;" data-value="3,345,000"></div>
+                                            </div>
+                                            <div class="bar-value">3,345,000</div>
+                                        </div>
+                                        <div class="bar-item">
+                                            <div class="bar-label">Marzo</div>
+                                            <div class="bar-container">
+                                                <div class="bar bar-green" style="width: 25.1%;" data-value="840,000"></div>
+                                            </div>
+                                            <div class="bar-value">840,000</div>
+                                        </div>
+                                        <div class="bar-item">
+                                            <div class="bar-label">Abril</div>
+                                            <div class="bar-container">
+                                                <div class="bar bar-yellow" style="width: 7.2%;" data-value="240,000"></div>
+                                            </div>
+                                            <div class="bar-value">240,000</div>
+                                        </div>
                                     </div>
-                                    <div class="bar-value">3,345,000</div>
-                                </div>
-                                <div class="bar-item">
-                                    <div class="bar-label">Marzo</div>
-                                    <div class="bar-container">
-                                        <div class="bar bar-green" style="width: 25.1%;" data-value="840,000"></div>
-                                    </div>
-                                    <div class="bar-value">840,000</div>
-                                </div>
-                                <div class="bar-item">
-                                    <div class="bar-label">Abril</div>
-                                    <div class="bar-container">
-                                        <div class="bar bar-yellow" style="width: 7.2%;" data-value="240,000"></div>
-                                    </div>
-                                    <div class="bar-value">240,000</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <img src="../assets/img/LOGO_AGUAS_YARACUY.png" alt="Logo" class="img-fluid" style="width: 80%;" />
+                    </div>
                 </div>
-                
                 <!-- Quick Actions -->
                 <div class="quick-actions">
                     <h4>Acciones Rápidas</h4>

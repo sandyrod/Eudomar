@@ -937,3 +937,7 @@ select,
 a {
   transition: var(--transition);
 }
+.small-logo {
+    width: 100px;
+    height: auto;
+  }

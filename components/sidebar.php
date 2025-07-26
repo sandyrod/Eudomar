@@ -22,10 +22,11 @@ $stmt->close();
     <div class="sidebar-header">
         <div class="company-brand">
             <div class="brand-icon">
-                <i class="fas fa-tint"></i>
+                <!-- <i class="fas fa-tint"></i> -->
+                 <img src="../assets/img/logo-removebg.png" alt="Logo" class="img-fluid" style="width: 90%;" />
             </div>
             <div class="brand-text">
-                <h3>Agua de Yaracuy</h3>
+                <h3>Aguas de Yaracuy</h3>
                 <span>Sistema de Gestión</span>
             </div>
         </div>

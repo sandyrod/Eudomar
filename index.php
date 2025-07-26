@@ -31,7 +31,10 @@ require_once 'conexion.php';
                     <div class="branding-content">
                         <div class="company-logo">
                             <div class="logo-icon">
-                                <i class="fas fa-tint"></i>
+                                <!-- <i class="fas fa-tint"></i> -->
+                                 <img src="assets/img/logo-removebg.png" alt="Logo" class="small-logo" />
+
+
                             </div>
                             <h1 class="company-name">Aguas de Yaracuy</h1>
                             <p class="company-tagline">Sistema de Gestión Operacional</p>
